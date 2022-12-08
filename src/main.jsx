@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import Index from './pages/Index'
 import Layout from './components/Layout'
+import NuevoCliente from './pages/NuevoCliente'
 import './index.css'
 import {
   createBrowserRouter,                  // Definir rutas por medio de objeto principal
@@ -13,8 +15,12 @@ const router = createBrowserRouter([    // Arreglo de rutas
     element: (<Layout />),              // Lo que se mostrara en la pagina
     children: [                         // Lo que este dentro hereda lo del componente 'Layout'
       {
+        index: true,                    // Se carga en la pag. principal
+        element:(<Index/>)         
+      },
+      {                                 
         path: '/clientes/nuevo',
-        element:(<h1>Desde test</h1>)
+        element:(<NuevoCliente/>)
       }
     ]
   },
