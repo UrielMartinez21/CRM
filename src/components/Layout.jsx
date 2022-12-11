@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom'
 
 const Layout = () => {
+//--------------------------| Ver en que ruta se encuentra |--------------------------
     const location = useLocation()
+
 //--------------------------| Valor que regresara |--------------------------
     return (
         <div className='md:flex md:min-h-screen'>

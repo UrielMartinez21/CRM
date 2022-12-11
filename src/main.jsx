@@ -17,7 +17,7 @@ const router = createBrowserRouter([    // Arreglo de rutas
       {
         index: true,                    // Se carga en la pag. principal
         element: (<Index />),
-        loader: clientesLoader
+        loader: clientesLoader          // Index tendra acceso a lo que contenga
       },
       {                                 
         path: '/clientes/nuevo',
