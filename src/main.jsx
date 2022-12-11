@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Index from './pages/Index'
+import Index,{loader as clientesLoader} from './pages/Index'
 import Layout from './components/Layout'
 import NuevoCliente from './pages/NuevoCliente'
 import './index.css'
@@ -16,7 +16,8 @@ const router = createBrowserRouter([    // Arreglo de rutas
     children: [                         // Lo que este dentro hereda lo del componente 'Layout'
       {
         index: true,                    // Se carga en la pag. principal
-        element:(<Index/>)         
+        element: (<Index />),
+        loader: clientesLoader
       },
       {                                 
         path: '/clientes/nuevo',
@@ -29,8 +30,8 @@ const router = createBrowserRouter([    // Arreglo de rutas
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider
-      router={router}
+    <RouterProvider       // Para implementar las rutas
+      router={router}     // Recibe el objeto con las rutas
     />
   </React.StrictMode>
 )
