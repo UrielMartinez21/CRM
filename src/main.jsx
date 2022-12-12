@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Index,{loader as clientesLoader} from './pages/Index'
 import Layout from './components/Layout'
-import NuevoCliente from './pages/NuevoCliente'
+import NuevoCliente, { action as nuevoClienteAction } from './pages/NuevoCliente'
 import './index.css'
 import {
   createBrowserRouter,                  // Definir rutas por medio de objeto principal
@@ -17,11 +17,12 @@ const router = createBrowserRouter([    // Arreglo de rutas
       {
         index: true,                    // Se carga en la pag. principal
         element: (<Index />),
-        loader: clientesLoader          // Index tendra acceso a lo que contenga
+        loader: clientesLoader          // Obtener datos
       },
       {                                 
         path: '/clientes/nuevo',
-        element:(<NuevoCliente/>)
+        element: (<NuevoCliente />),
+        action: nuevoClienteAction      // Mandar datos
       }
     ]
   },
