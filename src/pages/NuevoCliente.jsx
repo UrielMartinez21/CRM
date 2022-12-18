@@ -1,13 +1,17 @@
-import { useNavigate, Form } from 'react-router-dom'            // Hook para navegar entre paginas
-import Formulario from '../components/Formulario'
+import {
+    useNavigate,                                        // Hook para navegar entre paginas
+    Form                                                // Para manejar el envio de formularios
+} from 'react-router-dom'
+import Formulario from '../components/Formulario'       // Componente creado por desarrollador
 
-export const action = () => {                                   // Se mandara a llamar desde main
-    console.log("Desde actions")
+//--------------------------| Metodo que sera accedido desde 'main' |--------------------------
+export const action = ({request}) => {                  // Funcionara para 'NuevoCliente'
+    console.log(request)                                // Se mandara a llamar desde main
 }
 
-
+//--------------------------| Componente principal del archivo |--------------------------
 const NuevoCliente = () => {
-    const navigate = useNavigate()                              // Para navegar entre paginas
+    const navigate = useNavigate()                      // Para navegar entre paginas
 
 //--------------------------| Valor que regresara |--------------------------
     
@@ -18,14 +22,14 @@ const NuevoCliente = () => {
             <div className="flex justify-end">
                 <button
                     className="bg-blue-800 text-white px-3 py-1 font-bold uppercase"
-                    onClick={() => navigate(-1)}               // Direccionar entre paginas o con '/'
+                    onClick={() => navigate(-1)}    // Direccionar entre paginas o con '/'
                 >
                     Volver
                 </button>
             </div>
             <div className='bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-20'>
                 <Form
-                    method='post'
+                    method='post'                   // Metodo que se mandara cuando se presione 'enviar'
                 >
                     <Formulario />
                     <input 

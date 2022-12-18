@@ -11,18 +11,18 @@ import {
 
 const router = createBrowserRouter([    // Arreglo de rutas
   {
-    path: '/',                          // './'  para pagina principal
+    path: '/',                          // '/'  para pagina principal
     element: (<Layout />),              // Lo que se mostrara en la pagina
     children: [                         // Lo que este dentro hereda lo del componente 'Layout'
       {
         index: true,                    // Se carga en la pag. principal
         element: (<Index />),
-        loader: clientesLoader          // Obtener datos
+        loader: clientesLoader          // Obtener datos desde una API o un objeto(puede ser un state)
       },
       {                                 
-        path: '/clientes/nuevo',
-        element: (<NuevoCliente />),
-        action: nuevoClienteAction      // Mandar datos
+        path: '/clientes/nuevo',        // Ruta para ver contenido de 'element'
+        element: (<NuevoCliente />),    // Lo que se mostrara en el navegador
+        action: nuevoClienteAction      // Procesar entrada de datos de un formulario
       }
     ]
   },

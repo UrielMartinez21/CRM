@@ -3,7 +3,7 @@ import Cliente from '../components/Cliente'
 
 //--------------------------| Para agregarle state a la aplicacion |--------------------------
 export const loader = () => {               // Para que funcione tiene que retornar algo
-    const clientes = [
+    const clientes = [                      // Equivalente a metodo 'GET'
         {
             id: 1,
             nombre: 'Juan',
