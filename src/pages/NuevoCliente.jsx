@@ -1,17 +1,40 @@
 import {
     useNavigate,                                        // Hook para navegar entre paginas
-    Form                                                // Para manejar el envio de formularios
+    Form,                                               // Para manejar el envio de formularios
+    useActionData                                       // Para acceder a datos desde otro componente
 } from 'react-router-dom'
 import Formulario from '../components/Formulario'       // Componente creado por desarrollador
+import Error from '../components/Error'
 
 //--------------------------| Metodo que sera accedido desde 'main' |--------------------------
-export const action = ({request}) => {                  // Funcionara para 'NuevoCliente'
-    console.log(request)                                // Se mandara a llamar desde main
+export const action = async ({ request }) => {          // Contendra todo lo que usuario ponga en formulario
+    const formData = await request.formData()           // Obtener datos de 'request'
+    const datos = Object.fromEntries(formData)          // Se convierte en un objeto para poder ser leido
+
+    const email = formData.get('email')                   // Obtener valor especifico de 'formData'
+
+    //---> Agregar validacion campos vacios
+    const errores = []                                  // Lista/Arreglo vacio
+    if (Object.values(datos).includes('')) {            // Si algun valor del objeto tiene cadena vacia
+        errores.push('Falta llenar los campos')         // 'push' añade elementos al final de la lista
+    }
+
+    //---> Validar correo
+    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+    if (!regex.test(email)) {                           // Si no se cumple la condicion
+        errores.push('El correo no es valido')
+    }
+
+    //---> Retornar datos si hay errores
+    if (Object.keys(errores).length) {                  // Si tiene algo el arreglo de 'errores'
+        return errores
+    }
 }
 
 //--------------------------| Componente principal del archivo |--------------------------
 const NuevoCliente = () => {
     const navigate = useNavigate()                      // Para navegar entre paginas
+    const errores = useActionData()                     // Acceder a lo que retorno 'Action'
 
 //--------------------------| Valor que regresara |--------------------------
     
@@ -28,8 +51,10 @@ const NuevoCliente = () => {
                 </button>
             </div>
             <div className='bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-20'>
+                {errores?.length && errores.map((error, i) => (<Error key={i}>{error}</Error>))}
                 <Form
                     method='post'                   // Metodo que se mandara cuando se presione 'enviar'
+                    noValidate                      // Desactivar validacion de HTML
                 >
                     <Formulario />
                     <input 
