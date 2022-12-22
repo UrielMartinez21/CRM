@@ -6,10 +6,11 @@ import NuevoCliente, { action as nuevoClienteAction } from './pages/NuevoCliente
 import './index.css'
 import {
   createBrowserRouter,                  // Definir rutas por medio de objeto principal
-  RouterProvider                        // Recibira las rutas y las mostrara,
+  RouterProvider                        // Recibira las rutas y las mostrara.
 } from 'react-router-dom'
 import { ErrorPage } from './components/ErrorPage'
 
+//-----------------| Objeto que tendra las rutas |----------------- 
 const router = createBrowserRouter([    // Arreglo de rutas
   {
     path: '/',                          // '/'  para pagina principal
