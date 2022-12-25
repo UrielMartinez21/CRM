@@ -58,7 +58,6 @@ const NuevoCliente = () => {
         <Form
           method='post'                   // Metodo que se mandara cuando se presione 'enviar'
           noValidate                      // Desactivar validacion de HTML
-          // action=''
         >
           <Formulario />
           <input 

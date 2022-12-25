@@ -5,6 +5,13 @@ export const obtenerClientes = async () => {
   return resultado
 }
 
+//---> Metodo get al back-end
+export const obtenerCliente = async (id) => {
+  const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`)  // Se obtiene el objeto
+  const resultado = await respuesta.json()                                // Se convierte en JSON
+  return resultado
+}
+
 //---> Metodo post al back-end
 export const agregarCliente = async (datos) => {
   try {

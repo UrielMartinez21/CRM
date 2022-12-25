@@ -1,9 +1,9 @@
-import { useLoaderData } from 'react-router-dom'  // Acceder a lo que retorna 'loader'  
+import { useLoaderData } from 'react-router-dom'      // Acceder a lo que retorna 'loader'  
 import Cliente from '../components/Cliente'
 import { obtenerClientes } from '../data/Clientes'
 
 //--------------------------| Para agregarle state a la aplicacion |--------------------------
-export const loader = () => {               // PARA QUE FUNCIONE TIENE QUE RETORNAR ALGO
+export const loader = () => {             // PARA QUE FUNCIONE TIENE QUE RETORNAR ALGO
   const clientes = obtenerClientes()      // Obtiene los clientes del archivo que obtuvo del back-end
   return clientes
 }

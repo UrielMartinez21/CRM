@@ -42,6 +42,22 @@
       "telefono": "5567061251",
       "notas": "Nota de uriel",
       "id": 6
+    },
+    {
+      "nombre": "manzana",
+      "empresa": "Visolutions",
+      "email": "uriellmartinezz35@gmail.com",
+      "telefono": "5567061251",
+      "notas": "mensaje de manzana",
+      "id": 7
+    },
+    {
+      "nombre": "test",
+      "empresa": "test",
+      "email": "test@gmail.com",
+      "telefono": "555555",
+      "notas": "notas de test",
+      "id": 8
     }
   ]
 }
