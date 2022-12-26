@@ -1,4 +1,10 @@
-import { useNavigate } from "react-router-dom"
+import { Form, redirect, useNavigate } from "react-router-dom"
+import { eliminarCliente } from "../data/Clientes"
+
+export const action = async ({ params }) => {   // 'params' crea un objeto con el id del cliente
+  await eliminarCliente(params.clienteId)       // Espera a que elimine para pasar a redirect 
+  return redirect("/")
+}
 
 const Cliente = ({ cliente }) => {
 //--------------------------| Direccionamiento de url |--------------------------
@@ -32,12 +38,22 @@ const Cliente = ({ cliente }) => {
         >
           Editar
         </button>
-        <button
-          type="submit"
-          className="text-red-600 hover:text-red-700 uppercase font-bold text-xs "
+        <Form
+          method="post"
+          action={`/clientes/${id}/eliminar`}
+          onSubmit={(e) => {
+            if (!confirm("Deseas eliminar el registro")) {
+              e.preventDefault()
+            }
+          }}
         >
-          Eliminar
-        </button>
+          <button
+            type="submit"
+            className="text-red-600 hover:text-red-700 uppercase font-bold text-xs "
+            >
+            Eliminar
+          </button>
+        </Form>
       </td>
     </tr>
   )

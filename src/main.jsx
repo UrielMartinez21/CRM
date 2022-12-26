@@ -15,6 +15,7 @@ EditarCliente,
   loader as editarClienteLoader,
   action as editarClienteAction
 } from './pages/EditarCliente'
+import { action as eliminarClienteAction } from './components/Cliente'
 
 //-----------------| Objeto que tendra las rutas |----------------- 
 const router = createBrowserRouter([        // Arreglo de rutas
@@ -37,8 +38,13 @@ const router = createBrowserRouter([        // Arreglo de rutas
         path: '/clientes/:clienteId/editar',// Para routing dinamico, despues de '/:' se nombra como quiere
         element: <EditarCliente />,
         loader: editarClienteLoader,        // Obtencion de datos de cliente seleccionado
+        action: editarClienteAction,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: 'clientes/:clienteId/eliminar',
         errorElement: <ErrorPage />,
-        action: editarClienteAction
+        action: eliminarClienteAction       // Manda a llamar a la funcion exportada
       }
     ]
   },

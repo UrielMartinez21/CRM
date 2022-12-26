@@ -46,3 +46,14 @@ export const actualizarCliente = async (id, datos) => {
     console.log(error)                    // Mensaje de error
   }
 }
+
+export const eliminarCliente = async (id) => {
+  try {
+    const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      method: "DELETE"                       // Fetch por defecto usa metodo get
+    })
+    await respuesta.json()                // Retornara verdadero o falso
+  } catch (error) {
+    console.log(error)                    // Mensaje de error
+  }
+}
