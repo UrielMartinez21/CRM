@@ -31,7 +31,7 @@ export const action = async ({ request }) => {        // Contendra todo lo que u
   if (Object.keys(errores).length) {                // Si tiene algo el arreglo de 'errores'
     return errores
   }
-  await agregarCliente(datos)
+  await agregarCliente(datos)                       // Mandamos el objeto despues de validarlo
   return redirect("/")                              // Redireccionara a pagina principal
 }
 
@@ -55,7 +55,7 @@ const NuevoCliente = () => {
       </div>
       <div className='bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-20'>
         {errores?.length && errores.map((error, i) => (<Error key={i}>{error}</Error>))}
-        <Form
+        <Form                             // Componente propio de 'react-router-dom'
           method='post'                   // Metodo que se mandara cuando se presione 'enviar'
           noValidate                      // Desactivar validacion de HTML
         >

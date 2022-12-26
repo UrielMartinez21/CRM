@@ -9,7 +9,12 @@ import {
   RouterProvider                                    // Recibira las rutas y las mostrara.
 } from 'react-router-dom'
 import { ErrorPage } from './components/ErrorPage'
-import EditarCliente, { loader as editarClienteLoader } from './pages/EditarCliente'
+import
+EditarCliente,
+{
+  loader as editarClienteLoader,
+  action as editarClienteAction
+} from './pages/EditarCliente'
 
 //-----------------| Objeto que tendra las rutas |----------------- 
 const router = createBrowserRouter([        // Arreglo de rutas
@@ -32,7 +37,8 @@ const router = createBrowserRouter([        // Arreglo de rutas
         path: '/clientes/:clienteId/editar',// Para routing dinamico, despues de '/:' se nombra como quiere
         element: <EditarCliente />,
         loader: editarClienteLoader,        // Obtencion de datos de cliente seleccionado
-        errorElement: <ErrorPage />
+        errorElement: <ErrorPage />,
+        action: editarClienteAction
       }
     ]
   },

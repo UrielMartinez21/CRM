@@ -1,3 +1,6 @@
+/*
+      -------------| Requests HTTP |-------------
+*/
 //---> Metodo get al back-end
 export const obtenerClientes = async () => {
   const respuesta = await fetch(import.meta.env.VITE_API_URL) // Se obtiene el objeto
@@ -17,6 +20,22 @@ export const agregarCliente = async (datos) => {
   try {
     const respuesta = await fetch(import.meta.env.VITE_API_URL, {
       method: "POST",                     // Fetch por defecto usa metodo get
+      body: JSON.stringify(datos),        // Convierte los datos a un JSON
+      headers: {
+        "Content-Type":"application/json" // Decimos que la peticion sera de tipo JSON
+      }
+    })
+    await respuesta.json()                // Retornara verdadero o falso
+  } catch (error) {
+    console.log(error)                    // Mensaje de error
+  }
+}
+
+//---> Metodo put al back-end
+export const actualizarCliente = async (id, datos) => {
+  try {
+    const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      method: "PUT",                      // Fetch por defecto usa metodo get
       body: JSON.stringify(datos),        // Convierte los datos a un JSON
       headers: {
         "Content-Type":"application/json" // Decimos que la peticion sera de tipo JSON
